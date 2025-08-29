@@ -34,7 +34,6 @@ class AuthKitServiceProvider extends ServiceProvider
 
         $this->publishes([
             __DIR__ . '/../resources/views' => resource_path('views/vendor/auth-kit'),
-            __DIR__ . '/../public' => public_path('vendor/authkit'),
         ], 'authkit');
     }
 
