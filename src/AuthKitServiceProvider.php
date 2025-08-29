@@ -22,9 +22,11 @@ class AuthKitServiceProvider extends ServiceProvider
             __DIR__ . '/../resources/views' => resource_path('views/vendor/auth-kit'),
         ], 'authkit-views');
 
-        $this->publishes([
-            __DIR__ . '/../public' => public_path('vendor/authkit'),
-        ], 'authkit-assets');
+        if (is_dir(__DIR__ . '/../public')) {
+            $this->publishes([
+                __DIR__ . '/../public' => public_path('auth-kit'),
+            ], 'authkit-assets');
+        }
 
         if (file_exists(__DIR__ . '/../config/authkit.php')) {
             $this->publishes([
@@ -32,9 +34,11 @@ class AuthKitServiceProvider extends ServiceProvider
             ], 'authkit-config');
         }
 
-        $this->publishes([
-            __DIR__ . '/../resources/views' => resource_path('views/vendor/auth-kit'),
-        ], 'authkit');
+        $this->publishes(array_filter([
+            is_dir(__DIR__ . '/../resources/views') ? [__DIR__ . '/../resources/views' => resource_path('views/vendor/auth-kit')] : null,
+            is_dir(__DIR__ . '/../public') ? [__DIR__ . '/../public' => public_path('auth-kit')] : null,
+            file_exists(__DIR__ . '/../config/authkit.php') ? [__DIR__ . '/../config/authkit.php' => config_path('authkit.php')] : null,
+        ]), 'authkit');
     }
 
     public function register()
