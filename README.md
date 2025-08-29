@@ -44,24 +44,10 @@ This will publish:
 - Blade components (sidebar, links, topbar)
   
 - Layouts (e.g., `layouts/dashboard.blade.php`)
-  
 
 ---
 
-### 3. Register Service Provider (if needed)
-
-Laravel 12 with package auto-discovery doesn't require manual registration.  
-But if needed, add this to `config/app.php`:
-
-```php
-'providers' => [
-    RafaelMiano\AuthKit\AuthKitServiceProvider::class,
-],
-```
-
----
-
-### 4. Include Assets in `resources/js/app.js`
+### 3. Include Assets in `resources/js/app.js`
 
 Ensure Alpine.js is installed and imported:
 
@@ -71,7 +57,7 @@ npm install alpinejs
 
 ---
 
-### 5. Compile Frontend Assets
+### 4. Compile Frontend Assets
 
 ```bash
 npm install && npm run dev
