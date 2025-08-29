@@ -10,7 +10,6 @@ class AuthKitServiceProvider extends ServiceProvider
     public function boot()
     {
         $this->loadRoutesFrom(__DIR__ . '/../routes/web.php');
-
         $this->loadViewsFrom(__DIR__ . '/../resources/views', 'auth-kit');
 
         Livewire::component('auth.login', \RafaelMiano\AuthKit\Livewire\Auth\Login::class);
@@ -19,7 +18,7 @@ class AuthKitServiceProvider extends ServiceProvider
         Livewire::component('auth.profile', \RafaelMiano\AuthKit\Livewire\Auth\Profile::class);
 
         $this->publishes([
-            __DIR__ . '/../resources/views' => resource_path('views/vendor/auth-kit'),
+            __DIR__ . '/../resources/views' => resource_path('views/auth-kit'),
         ], 'authkit-views');
 
         if (is_dir(__DIR__ . '/../public')) {
@@ -34,12 +33,23 @@ class AuthKitServiceProvider extends ServiceProvider
             ], 'authkit-config');
         }
 
-        $this->publishes(array_filter([
-            is_dir(__DIR__ . '/../resources/views') ? [__DIR__ . '/../resources/views' => resource_path('views/vendor/auth-kit')] : null,
-            is_dir(__DIR__ . '/../public') ? [__DIR__ . '/../public' => public_path('auth-kit')] : null,
-            file_exists(__DIR__ . '/../config/authkit.php') ? [__DIR__ . '/../config/authkit.php' => config_path('authkit.php')] : null,
-        ]), 'authkit');
+        $publishPaths = [];
+
+        if (is_dir(__DIR__ . '/../resources/views')) {
+            $publishPaths += [__DIR__ . '/../resources/views' => resource_path('views/auth-kit')];
+        }
+
+        if (is_dir(__DIR__ . '/../public')) {
+            $publishPaths += [__DIR__ . '/../public' => public_path('auth-kit')];
+        }
+
+        if (file_exists(__DIR__ . '/../config/authkit.php')) {
+            $publishPaths += [__DIR__ . '/../config/authkit.php' => config_path('authkit.php')];
+        }
+
+        $this->publishes($publishPaths, 'authkit');
     }
+
 
     public function register()
     {
