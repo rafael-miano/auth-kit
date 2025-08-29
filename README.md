@@ -69,17 +69,6 @@ Ensure Alpine.js is installed and imported:
 npm install alpinejs
 ```
 
-Then add this to your `resources/js/app.js`:
-
-```js
-import Alpine from 'alpinejs'
-import persist from '@alpinejs/persist'
-
-Alpine.plugin(persist)
-window.Alpine = Alpine
-Alpine.start()
-```
-
 ---
 
 ### 5. Compile Frontend Assets
