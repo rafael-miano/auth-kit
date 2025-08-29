@@ -24,7 +24,7 @@ class Login extends Component
         if (Auth::attempt(['email' => $this->email, 'password' => $this->password], $this->remember)) {
             session()->regenerate();
             // After authenticating the user successfully
-            ToastMagic::success("Success!", "Your data has been saved!");
+            ToastMagic::success("Success!", "Successfully logged in!");
             return redirect()->route('dashboard')->with('login_success', true);
         }
 
