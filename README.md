@@ -24,7 +24,7 @@ A simple Laravel Livewire authentication UI kit for quickly scaffolding user aut
 ### 1. Install via Composer
 
 ```bash
-composer require rafaelmiano/authkit
+composer require rafaelmiano/auth-kit
 ```
 
 ---
@@ -32,7 +32,7 @@ composer require rafaelmiano/authkit
 ### 2. Publish Assets (Views, Config, Components)
 
 ```bash
-php artisan vendor:publish --tag=auth-kit
+php artisan vendor:publish --tag=authkit
 ```
 
 This will publish:
