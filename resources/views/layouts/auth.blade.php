@@ -27,7 +27,7 @@
     @livewireStyles
 </head>
 
-<body class="bg-gray-100 dark:bg-zinc-900 flex items-center justify-center min-h-screen px-4">
+<body class="bg-gray-100 dark:bg-zinc-900 flex items-center justify-center min-h-screen px-4" theme="dark">
     <div class="w-full max-w-md">
         {{ $slot }}
     </div>

@@ -9,7 +9,7 @@
     @livewireStyles
     {!! ToastMagic::styles() !!}
 </head>
-<body class="flex bg-gray-100 dark:bg-zinc-900 text-gray-900 dark:text-white min-h-screen">
+<body class="flex bg-gray-100 dark:bg-zinc-900 text-gray-900 dark:text-white min-h-screen" theme="dark">
 
     <!-- Sidebar -->
     <x-auth-kit::sidebar>
